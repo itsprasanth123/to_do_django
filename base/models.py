@@ -1,10 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import user
+from django.contrib.auth.models import User
 # Create your models here.
 
-class Task(models.model):
-    ures=models.ForeignKey(user, on_delete=models.CASCADE, null=true, blank=true)
-    title=models.charfield(max_length=200)
-    description=models.textfield(null=true, blank=true)
-    complete=models.Booleanfield(default=false)
-    create=models.datatimefield(auto_naw_add=true)
+class Task(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    title=models.CharField(max_length=200)
+    description=models.TextField(null=True, blank=True)
+    complete=models.BooleanField(default=False)
+    create=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class meta:
+        ordering=['complete'] 

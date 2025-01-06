@@ -2,6 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def takline(request):
+def taskList(request):
     return HttpResponse('to_Do list')
  
